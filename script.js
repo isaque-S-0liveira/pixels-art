@@ -10,13 +10,13 @@ function geraDiv() {
     colorPalette.appendChild(divPalette);
   }
   console.log(colorPalette);
-}geraDiv();
+}
 
 function adcCorPreta() {
   const divBlack = document.querySelector('div');
   divBlack.style.backgroundColor = 'black';
   divBlack.classList.add('selected')
-} adcCorPreta();
+} 
 
 function geraCorAleatoria() {
   // 'r' 'g' 'b' fora do for, faz com que todas as divs recebam a mesma cor, dentro cada giro gera um num aleatorio;
@@ -26,7 +26,7 @@ function geraCorAleatoria() {
     const b = Math.random() * 255;
     color[i].style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`;
   }
-}geraCorAleatoria();
+}
 
 function quadroDePixels() {
     for (let i = 0; i < 25; i += 1) {
@@ -35,7 +35,9 @@ function quadroDePixels() {
         pixels.style.backgroundColor = 'wite';
         pixelBoard.appendChild(pixels);
     }
-}quadroDePixels()
+
+ }
+
 
 function selecionaCor () {
     //selected só funciona se estiver dentro da função ;-;
@@ -48,7 +50,7 @@ function selecionaCor () {
             console.log(colorPalette);
         });       
     }
-}selecionaCor();
+}
 
 function colorirPixels() {
    
@@ -65,7 +67,7 @@ function colorirPixels() {
         
     }
 }
-colorirPixels();
+
 /* Segunda opç para colorir o quadro de pixels;
 const colorirPixel = (evento) => {
   if (evento.target.classList.contains('pixel')) {
@@ -88,4 +90,30 @@ function buttoLimpar() {
             }
       });
     }
-}buttoLimpar();
+}
+function geraNovasDivs() {
+    
+
+const buttunVQV = document.querySelector('#generate-board');
+buttunVQV.addEventListener('click', function(){
+    const input = document.querySelector('#board-size');
+    const inputValue = input.value;
+    console.log(inputValue);
+    if (inputValue > 0) {
+        for (let i = 0; inputValue * inputValue; i += 1) {
+            const novasDivs = document.createElement('div')
+            novasDivs.className = 'pixel';
+            novasDivs.style.backgroundColor = 'white';
+        }
+        pixelBoard.appendChild(novasDivs);
+    }
+});
+}
+geraDiv();
+adcCorPreta();
+geraCorAleatoria();
+quadroDePixels();
+selecionaCor();
+colorirPixels();
+buttoLimpar();
+geraNovasDivs();

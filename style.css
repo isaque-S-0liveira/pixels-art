@@ -5,18 +5,25 @@
   height: 50px;
 }
 
-
-.pixel{
+.pixel {
   display: inline-block;
   width: 40px;
   height: 40px;
   border: 1px solid black;
 }
 
-#pixel-board{
+#title {
+  
+}
+
+#pixel-board {
   width: 250px;
 }
 
-#clear-board{
+#clear-board {
   margin-left: 70px;
+}
+
+#board-size{
+width: 150px;
 }
