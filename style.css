@@ -12,10 +12,6 @@
   border: 1px solid black;
 }
 
-#title {
-  
-}
-
 #pixel-board {
   width: 250px;
 }
@@ -24,6 +20,6 @@
   margin-left: 70px;
 }
 
-#board-size{
-width: 150px;
+#board-size {
+  width: 150px;
 }
