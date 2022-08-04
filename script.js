@@ -9,13 +9,15 @@ function geraDiv() {
     colorPalette.appendChild(divPalette);
   }
   console.log(colorPalette);
-}geraDiv();
+}
+geraDiv();
 
 function adcCorPreta() {
   const divBlack = document.querySelector('div');
   divBlack.style.backgroundColor = 'black';
-  divBlack.classList.add('selected');
-} adcCorPreta();
+  divBlack.classList.add('selected')
+} 
+adcCorPreta();
 
 function geraCorAleatoria() {
   // 'r' 'g' 'b' fora do for, faz com que todas as divs recebam a mesma cor, dentro cada giro gera um num aleatorio;
@@ -25,69 +27,84 @@ function geraCorAleatoria() {
     const b = Math.random() * 255;
     color[i].style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`;
   }
-}geraCorAleatoria();
+}
+geraCorAleatoria();
 
 function quadroDePixels() {
-  for (let i = 0; i < 25; i += 1) {
-    const pixels = document.createElement('div');
-    pixels.className = 'pixel';
-    pixels.style.backgroundColor = 'wite';
-    pixelBoard.appendChild(pixels);
-  }
-}quadroDePixels();
+    for (let i = 0; i < 25; i += 1) {
+        const pixels = document.createElement('div');
+        pixels.className = 'pixel';
+        pixels.style.backgroundColor = 'wite';
+        pixelBoard.appendChild(pixels);
+    }
 
-function selecionaCor() {
-  // selected só funciona se estiver dentro da função ;-;
+ }
+ quadroDePixels();
 
-  for (let i = 0; i < color.length; i += 1) {
-    color[i].addEventListener('click', (event) => {
-      const selected = document.querySelector('.selected');
-      selected.classList.remove('selected');
-      event.target.classList.add('selected');
-      console.log(colorPalette);
-    });
-  }
-}selecionaCor();
+function selecionaCor () {
+    //selected só funciona se estiver dentro da função ;-;
+
+     for (let i = 0; i < color.length; i += 1) {
+        color[i].addEventListener('click', function(event){
+            const selected = document.querySelector('.selected');
+           selected.classList.remove('selected');
+            event.target.classList.add('selected');
+            console.log(colorPalette);
+        });       
+    }
+}
+selecionaCor();
 
 function colorirPixels() {
+   
   const pixels = document.querySelectorAll('.pixel');
 
-  for (let i = 0; i < pixels.length; i += 1) {
-    pixels[i].addEventListener('click', (event) => {
-      const selected = document.querySelector('.selected');
-      const objCss = window.getComputedStyle(selected, null);
-      const propriedadeCss = objCss.getPropertyValue('background-color');
-      event.target.style.backgroundColor = propriedadeCss;
-      console.log(selected);
-    });
-  }
+   for (let i = 0; i < pixels.length; i += 1) {
+     
+        pixels[i].addEventListener('click', function(event){
+         const selected = document.querySelector('.selected');
+        const objCss = window.getComputedStyle(selected,null);
+        const propriedadeCss = objCss.getPropertyValue('background-color');
+        event.target.style.backgroundColor = propriedadeCss;
+        console.log(selected);
+       });
+       
+    }
 }colorirPixels();
 
-function geraNovasDivs() {
-  const buttunVQV = document.querySelector('#generate-board');
-  buttunVQV.addEventListener('click', () => {
-    const input = document.querySelector('#board-size');
-    const inputValue = input.value;
-    if (inputValue === '') {
-      alert('Board inválido!');
-    } else {
-      for (let i = 0; i < inputValue * inputValue; i += 1) {
-        console.log(inputValue);
-        const novasDivs = document.createElement('div');
-        novasDivs.className = 'pixel';
-        novasDivs.style.backgroundColor = 'white';
-        // pixelBoard.style.width = '270px'
-        // pixelBoard.style.height = '90%';
-        pixelBoard.appendChild(novasDivs);
-        const pixels = document.querySelectorAll('.pixel');
 
-        colorirPixels();
-        buttoLimpar();
-      }
+ function geraNovasDivs() {
+ 
+      const buttunVQV = document.querySelector('#generate-board');
+buttunVQV.addEventListener('click', function(){
+ const input = document.querySelector('#board-size');
+      const inputValue = input.value;
+      if (inputValue === '') {
+          alert('Board inválido!');
+        }else {
+        for (let i = 0; i < inputValue * inputValue; i += 1) {
+           
+             console.log(inputValue);
+            const novasDivs = document.createElement('div');
+            novasDivs.className = 'pixel';
+            novasDivs.style.backgroundColor = 'white';
+            //pixelBoard.style.width = '270px'
+            //pixelBoard.style.height = '90%';
+             pixelBoard.appendChild(novasDivs);
+              const pixels = document.querySelectorAll('.pixel');
+
+         
+           
+
+        } 
     }
-  });
+});
 }
+colorirPixels();
+buttoLimpar();
 geraNovasDivs();
+
+
 
 /* Segunda opç para colorir o quadro de pixels;
 const colorirPixel = (evento) => {
@@ -95,20 +112,20 @@ const colorirPixel = (evento) => {
     const selected = document.querySelector('.selected');
     const objCssSelected = window.getComputedStyle(selected, null);
     const bgCor = objCssSelected.getPropertyValue('background-color')
-    evento.target.style.backgroundColor = bgCor;
+    evento.target.style.backgroundColor = bgCor; 
   }
 }
 
 document.addEventListener('click', colorirPixel);
 */
 function buttoLimpar() {
-  const button = document.querySelector('#clear-board');
-  const pixels = document.getElementsByClassName('pixel');
-  for (let i = 0; i < pixels.length; i += 1) {
-    button.addEventListener('click', () => {
-      if (pixels[i].style.backgroundColor !== 'white') {
-        pixels[i].style.backgroundColor = 'white';
-      }
-    });
-  }
+    const button = document.querySelector('#clear-board')
+    const pixels = document.getElementsByClassName('pixel');
+    for (let i = 0; i < pixels.length; i += 1) {
+         button.addEventListener('click', function(){
+            if (pixels[i].style.backgroundColor !== 'white') {
+                pixels[i].style.backgroundColor = 'white'
+            }
+      });
+    }
 }buttoLimpar();
